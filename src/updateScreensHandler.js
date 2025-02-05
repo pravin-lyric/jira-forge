@@ -1,6 +1,5 @@
 import api, { route } from '@forge/api';
 import { addCustomFieldToAllScreens } from './api/updateScreens';
-import { addCustomFieldToAllProjects } from './api/updateProjects';
 
 /**
  * Fetches all custom fields from Jira using the @forge/api package.
