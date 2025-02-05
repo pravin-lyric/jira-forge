@@ -40,16 +40,11 @@ export async function handler(req, context) {
     }
 
     customFieldId = customField.id;
-    const results = await addCustomFieldToAllProjects(customFieldId)
     const result = await addCustomFieldToAllScreens(customFieldId);
-    
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        success: true,
-        results
-      })
+      body: result
     };
   } catch (error) {
     console.error("Error in handler:", error);
