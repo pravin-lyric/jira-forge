@@ -4,7 +4,7 @@ import api, { route } from '@forge/api';
  * Adds the custom field to all screens and their tabs in Jira.
  *
  * @param {string} customFieldId - The identifier of your custom field.  
- * For Forge custom fields, this is often the value used in your manifest (e.g., "pravin-custom-field-ui-kit-2-hello-world").
+ * For Forge custom fields, this is often the value used in your manifest (e.g., "finding-id", "account-id").
  *
  * @returns {Promise<Object>} An object indicating success or error details.
  */

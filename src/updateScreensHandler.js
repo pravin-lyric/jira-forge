@@ -19,7 +19,7 @@ async function fetchCustomFields() {
 /**
  * Handler function that:
  * 1. Fetches the list of all custom fields from Jira.
- * 2. Finds the custom field with the name "pravin-custom-field-ui-kit-2-hello-world".
+ * 2. Finds the custom field with the name "Finding ID" and "Account ID".
  * 3. Uses its ID to add it to all screens.
  */
 export async function handler(req, context) {

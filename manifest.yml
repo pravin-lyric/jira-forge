@@ -1,7 +1,7 @@
 modules:
   jira:customField:
-    - key: pravin-custom-field-ui-kit-2-hello-world-1
-      name: pravin 1
+    - key: finding-id
+      name: Finding ID
       description: A hello world custom field.
       type: string
       render: native
@@ -10,8 +10,8 @@ modules:
         resource: edit
         render: native
         isInline: true
-    - key: pravin-custom-field-ui-kit-2-hello-world-2
-      name: pravin 2
+    - key: account-id
+      name: Account ID
       description: A hello world custom field.
       type: string
       render: native
