@@ -1,7 +1,17 @@
 modules:
   jira:customField:
-    - key: pravin-custom-field-ui-kit-2-hello-world
-      name: pravin
+    - key: pravin-custom-field-ui-kit-2-hello-world-1
+      name: pravin 1
+      description: A hello world custom field.
+      type: string
+      render: native
+      resource: main
+      edit:
+        resource: edit
+        render: native
+        isInline: true
+    - key: pravin-custom-field-ui-kit-2-hello-world-2
+      name: pravin 2
       description: A hello world custom field.
       type: string
       render: native

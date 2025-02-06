@@ -1,6 +1,6 @@
 {
   "name": "jira-custom-field-ui-kit-2",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "main": "index.js",
   "license": "MIT",
   "private": true,

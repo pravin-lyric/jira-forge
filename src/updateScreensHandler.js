@@ -1,11 +1,15 @@
-import api, { route } from '@forge/api';
-import { addCustomFieldToAllScreens } from './api/updateScreens';
+import api, { route } from "@forge/api";
+import { addCustomFieldToAllScreens } from "./api/updateScreens";
+
+import config from "../config";
 
 /**
  * Fetches all custom fields from Jira using the @forge/api package.
  */
 async function fetchCustomFields() {
-  const fieldsResponse = await api.asApp().requestJira(route`/rest/api/3/field`);
+  const fieldsResponse = await api
+    .asApp()
+    .requestJira(route`/rest/api/3/field`);
   if (!fieldsResponse.ok) {
     throw new Error(`Failed to fetch custom fields: ${fieldsResponse.status}`);
   }
@@ -19,40 +23,43 @@ async function fetchCustomFields() {
  * 3. Uses its ID to add it to all screens.
  */
 export async function handler(req, context) {
-  const customFieldName = 'pravin';
   let customFieldId;
 
   try {
     const fields = await fetchCustomFields();
 
-    // Find the custom field matching the name
-    const customField = fields.find(field => field.name === customFieldName);
+    console.log(fields);
 
-    if (!customField) {
+    const customFieldList = Object.keys(config.customFieldList);
+
+    const customFields = fields.filter((field) =>
+      customFieldList.find((customField) => field.key.includes(customField))
+    );
+
+    console.log(customFields);
+
+    if (!customFields.length) {
       return {
         statusCode: 404,
         body: JSON.stringify({
           success: false,
-          message: `Custom field with name "${customFieldName}" not found.`
-        })
+          message: `Custom field with name "${customFieldList.join(", ")}" not found.`,
+        }),
       };
     }
 
-    customFieldId = customField.id;
-    const result = await addCustomFieldToAllScreens(customFieldId);
-
-    return {
-      statusCode: 200,
-      body: result
-    };
+    customFields.forEach(async (field) => {
+      customFieldId = field.id;
+      const result = await addCustomFieldToAllScreens(customFieldId);
+    });
   } catch (error) {
     console.error("Error in handler:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({
         success: false,
-        message: error.message
-      })
+        message: error.message,
+      }),
     };
   }
-} 
+}
