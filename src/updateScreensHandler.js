@@ -48,6 +48,8 @@ export async function handler(req, context) {
         const screenId = screens.find((s) => s.name === screen);
         const result = await addCustomFieldToScreen(screenId.id, customFieldId);
       }
+
+      // const result = await addCustomFieldToAllScreens(customFieldId);
     });
 
   } catch (error) {
