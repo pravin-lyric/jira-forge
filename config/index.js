@@ -5,8 +5,8 @@ const config = {
     "account-id": "Account ID",
   },
   customFieldToScreenMapping: {
-    "finding-id": ["PRAV: Kanban Default Issue Screen", "PRAV: Kanban Bug Screen"],
-    "account-id": ["Resolve Issue Screen"],
+    "finding-id": ["JIRA Service Desk Pending Reason screen", "JIRA Service Desk Pending Reason screen - 2"],
+    "account-id": ["JIRA Service Desk Pending Reason screen - 3", "JIRA Service Desk Pending Reason screen - 4"],
   },
 };
 

@@ -1,11 +1,15 @@
 import { fetchTabs, addCustomFieldToTab } from "./api";
 
 export async function addCustomFieldToScreen(screenId, customFieldId) {
-  const tabsData = await fetchTabs(screenId);
-
-  for (const tab of tabsData) {
-    const tabId = tab.id;
-    await addCustomFieldToTab(screenId, tabId, customFieldId);
+  try {
+    const tabsData = await fetchTabs(screenId);
+    for (const tab of tabsData) {
+      const tabId = tab.id;
+      await addCustomFieldToTab(screenId, tabId, customFieldId);
+    }
+  } catch (error) {
+    console.error("Error updating screens:", error);
+    return { success: false, error: error.toString() };
   }
 }
 

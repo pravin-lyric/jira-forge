@@ -10,7 +10,6 @@ import config from "../config";
  * 3. Uses its ID to add it to all screens.
  */
 export async function handler(req, context) {
-  let customFieldId;
 
   try {
     const fields = await fetchCustomFields();
@@ -41,12 +40,11 @@ export async function handler(req, context) {
 
     const screens = await fetchScreens();
     customFields.forEach(async (field) => {
-      customFieldId = field.id;
       const screensToUpdate =
         config.customFieldToScreenMapping[field.internalKey];
       for (const screen of screensToUpdate) {
         const screenId = screens.find((s) => s.name === screen);
-        const result = await addCustomFieldToScreen(screenId.id, customFieldId);
+        const result = await addCustomFieldToScreen(screenId.id, field.id);
       }
 
       // const result = await addCustomFieldToAllScreens(customFieldId);
