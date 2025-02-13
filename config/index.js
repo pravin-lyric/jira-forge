@@ -1,13 +1,22 @@
 // custom field name and key should be same as in manifest.yml
 const config = {
   customFieldList: {
-    "finding-id": "Finding ID",
-    "account-id": "Account ID",
+    "custom-field-account-id": "Account ID",
+    "custom-field-finding-id": "Finding ID",
   },
   customFieldToScreenMapping: {
-    "finding-id": ["JIRA Service Desk Pending Reason screen", "JIRA Service Desk Pending Reason screen - 2"],
-    "account-id": ["JIRA Service Desk Pending Reason screen - 3", "JIRA Service Desk Pending Reason screen - 4"],
+    "custom-field-account-id": [
+      "Default Screen",
+      "Resolve Issue Screen",
+      "SUP: Jira Service Management: Incident View/Edit Screen",
+    ],
+    "custom-field-finding-id": [
+      "Default Screen",
+      "Resolve Issue Screen",
+      "Workflow Screen",
+      "SAM: Kanban Default Issue Screen",
+      "SUP: Jira Service Management: Incident View/Edit Screen",
+    ],
   },
 };
-
 export default config;

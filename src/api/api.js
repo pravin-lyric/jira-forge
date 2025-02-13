@@ -19,6 +19,19 @@ export async function fetchTabs(screenId) {
   return tabsResponse.json();
 }
 
+export async function getCustomFieldsOfTab(screenId, tabId) {
+  const getFieldResponse = await api
+    .asApp()
+    .requestJira(route`/rest/api/3/screens/${screenId}/tabs/${tabId}/fields`);
+  if (!getFieldResponse.ok) {
+    throw new Error(
+      `Failed to get custom fields of screen ${screenId} tab ${tabId}. Status: ${getFieldResponse.status}`
+    );
+  }
+  const getFieldData = await getFieldResponse.json();
+  return getFieldData;
+}
+
 export async function addCustomFieldToTab(screenId, tabId, customFieldId) {
   const addFieldResponse = await api
     .asApp()

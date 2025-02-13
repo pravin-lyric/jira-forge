@@ -1,8 +1,8 @@
 modules:
   jira:customField:
-    - key: finding-id
-      name: Finding ID
-      description: A hello world custom field.
+    - key: custom-field-account-id
+      name: Account ID
+      description: A custom field for Account ID.
       type: string
       render: native
       resource: main
@@ -10,9 +10,9 @@ modules:
         resource: edit
         render: native
         isInline: true
-    - key: account-id
-      name: Account ID
-      description: A hello world custom field.
+    - key: custom-field-finding-id
+      name: Finding ID
+      description: A custom field for Finding ID.
       type: string
       render: native
       resource: main
@@ -38,11 +38,10 @@ resources:
 app:
   runtime:
     name: nodejs22.x
-  id: ari:cloud:ecosystem::app/77791aba-8c1d-436c-a055-2aabdf32f61e
+  id: ari:cloud:ecosystem::app/f94be6b9-ef97-47e8-9bc0-ffc4c0c57d5a
 permissions:
   scopes:
     - read:jira-work
     - write:jira-work
     - manage:jira-configuration
     - manage:jira-project
-

@@ -1,11 +1,19 @@
-import { fetchTabs, addCustomFieldToTab } from "./api";
+import { fetchTabs, addCustomFieldToTab, getCustomFieldsOfTab } from "./api";
 
 export async function addCustomFieldToScreen(screenId, customFieldId) {
   try {
     const tabsData = await fetchTabs(screenId);
     for (const tab of tabsData) {
       const tabId = tab.id;
-      await addCustomFieldToTab(screenId, tabId, customFieldId);
+      const customFields = await getCustomFieldsOfTab(screenId, tabId);
+      const customField = (customFields || []).find(
+        (field) => field.id === customFieldId
+      );
+      if (!customField) {
+        await addCustomFieldToTab(screenId, tabId, customFieldId);
+      } else {
+        console.log("customField already exists");
+      }
     }
   } catch (error) {
     console.error("Error updating screens:", error);

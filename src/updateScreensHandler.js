@@ -10,7 +10,6 @@ import config from "../config";
  * 3. Uses its ID to add it to all screens.
  */
 export async function handler(req, context) {
-
   try {
     const fields = await fetchCustomFields();
     const customFieldList = Object.keys(config.customFieldList);
@@ -49,7 +48,6 @@ export async function handler(req, context) {
 
       // const result = await addCustomFieldToAllScreens(customFieldId);
     });
-
   } catch (error) {
     console.error("Error in handler:", error);
     return {
